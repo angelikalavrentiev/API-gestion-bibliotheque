@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="/css/style.css")
+        title Détail
+    body 
+        include partials/header.pug
+
+        h1 #{book.title}
+        h2 Auteur: #{book.author}
+        if book.disponible
+            p(style="color:green") Disponible à l'emprunt
+        else
+            p(style="color:red") Indisponible actuellement
+
+        h2 Modifier ce livre
+        form(action=`/books/${book.id}?_method=PUT` method="POST")
+            label(for="title") Titre :
+            input(type="text" id="title" name="title" value=book.title required)
+
+            label(for="author") Auteur :
+            input(type="text" id="author" name="author" value=book.author required)
+
+            label(for="disponible") Disponible :
+            if book.disponible
+                input(type="checkbox" id="disponible" name="disponible" checked)
+            else
+                input(type="checkbox" id="disponible" name="disponible")
+
+            button(type="submit") Enregistrer les modifications
+
+        h2 Supprimer ce livre
+        form(action=`/books/${book.id}?_method=DELETE` method="POST" onsubmit="return confirm('Supprimer ce livre ?');")
+            button(type="submit") Supprimer
+
+        a(href="/books") Retour à la liste des livres
+
+        include partials/footer.pug

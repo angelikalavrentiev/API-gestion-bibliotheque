@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "1984",
+    "author": "George Orwell",
+    "disponible": true
+  },
+  {
+    "id": 2,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "disponible": false
+  },
+  {
+    "id": 3,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "id": 4,
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "disponible": true
+  }
+]

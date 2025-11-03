@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="/css/style.css")
+        title Accueil
+    body 
+        include partials/header.pug
+
+        h1 Bienvenue à la Bibliothèque en ligne
+        ul 
+            each book in books
+                li
+                    a(href=`/books/${book.id}`) #{book.title} par #{book.author}
+                    if book.disponible
+                        span(style="color:green")  (Disponible)
+                    else
+                        span(style="color:red")  (Indisponible)
+
+        h2 Ajouter un nouveau livre
+        form(action="/books" method="POST")
+            label(for="title") Titre:
+            input(type="text" name="title" id="title" required)
+            label(for="author") Auteur:
+            input(type="text" name="author" id="author" required)
+            label(for="disponible") Disponible:
+            input(type="checkbox" name="disponible" id="disponible")
+            button(type="submit") Ajouter le livre
+
+        include partials/footer.pug
